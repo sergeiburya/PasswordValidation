@@ -9,11 +9,10 @@ public class UserService {
         validation.validate(user.getPassword(), user.getRepeatPassword());
         userService.saveUser(new User(user.getEmail(), user.getPassword(), user.getRepeatPassword()));
     } catch (PasswordValidationException ex) {
-        System.out.println("Wrong passwords");
-    } catch (Exception e) {
-      System.out.println("Your passwords are incorrect. Try again.");
+        System.out.println("Your passwords are incorrect. Try again.");
     }
   }
+
 
   public void saveUser(User user){
     System.out.println("User " + user.toString() + " was saved to database!!!");

@@ -1,22 +1,16 @@
 package mate.academy;
 
+import java.nio.charset.StandardCharsets;
+
 public class PasswordValidator {
-    public void validate(String password, String repeatPassword) throws Exception {
-        UserService userService = new UserService();
-        if (password != null && repeatPassword != null && password != "" && repeatPassword != "") {
+    public void validate(String password, String repeatPassword) throws PasswordValidationException {
 
-        } else {
-            throw new Exception("Your passwords are incorrect. Try again.");
-        }
-        if ((password.equals(repeatPassword)) && ((password == repeatPassword))) {
+        boolean checkPassNull = password != null && password != "";
+        boolean equalityTwoPass = password == repeatPassword || password.equals(repeatPassword);
+        boolean lengthPass = password.length() >= 10 && repeatPassword.length() >= 10;
 
-        } else {
+        if (!checkPassNull || !lengthPass || !equalityTwoPass) {
             throw new PasswordValidationException("Wrong passwords");
-        }
-        if (password.length() >= 10 && repeatPassword.length() >= 10) {
-            return;
-        } else {
-            throw new Exception("Your passwords are incorrect. Try again.");
         }
     }
 }
